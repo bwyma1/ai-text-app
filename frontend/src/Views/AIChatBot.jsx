@@ -11,7 +11,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme();
 
-export default function Login() {
+export default function AIChatBot() {
   //submitting the form and logging in if correct credentials
   //if correct it will send the user to "/"
   const handleSubmit = (event) => {

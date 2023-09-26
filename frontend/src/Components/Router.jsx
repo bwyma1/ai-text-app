@@ -1,19 +1,15 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Homepage from "../Views/Homepage";
-import Login from "../Views/Login";
-import PasswordReset from "../Views/PasswordReset";
-import SignUp from "../Views/SignUp";
 import ResponsiveNavbar from "./Navbar";
+import AIChatBot from "../Views/AIChatBot";
 
 export const Router = () => (
   <BrowserRouter>
     <ResponsiveNavbar />
     <Routes>
-      <Route path="login" element={<Login />} />
-      <Route path="signup" element={<SignUp />} />
       <Route path="/" element={<Homepage />} />
       <Route path="homepage" element={<Homepage />} />
-      <Route path="passwordreset" element={<PasswordReset />} />
+      <Route path="aichatbot" element={<AIChatBot />} />
     </Routes>
   </BrowserRouter>
 );
