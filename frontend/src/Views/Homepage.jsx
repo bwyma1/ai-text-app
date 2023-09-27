@@ -14,14 +14,14 @@ export default function Homepage() {
       >
         <Paper sx={{ p: 4, borderRadius: 2, backgroundColor: "#fff" }}>
           <Typography component="h1" variant="h1" sx={{ textAlign: "center" }}>
-            Welcome to our AI website!
+            Welcome to Automated Inquiries
           </Typography>
           <Typography
             component="p"
-            variant="h5"
-            sx={{ mt: 2, textAlign: "center" }}
+            variant="h4"
+            sx={{ mt: 2, mx: 10, textAlign: "center" }}
           >
-            Your one-stop online website for answering your moral and ethical
+            The latest AI Ethics Website for all your one-stop online website for answering your moral and ethical
             questions...
           </Typography>
           <Typography
