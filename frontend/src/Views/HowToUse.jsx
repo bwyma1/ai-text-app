@@ -13,15 +13,17 @@ export default function HowToUse() {
           alignItems: "center",
         }}
       >
-        <Paper sx={{ p: 4, borderRadius: 2, backgroundColor: "#fff" }}>
+        {/* <Paper sx={{ p: 4, borderRadius: 2, backgroundColor: "#fff" }}>
           <Typography component="h1" variant="h1" sx={{ textAlign: "center" }}>
             How to Use page
           </Typography>
-        </Paper>
+        </Paper> */}
        
         {/* Card Section */}
-        <Card sx={{ marginTop: 2, padding: 2, margin: "0 auto", maxWidth: "760px" }}>
-          <Typography variant="h2">How to Use the AI Chat Bot:</Typography>
+        <Card sx={{ marginTop: 2, padding: 2, margin: "0 auto", maxWidth: "900px" }}>
+        <div style={{ textAlign: 'center' }}>
+          <Typography variant="h2">How to Use:</Typography>
+        </div>
           <ol>
             <li>
               <Typography variant="body1">
