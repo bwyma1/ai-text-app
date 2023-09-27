@@ -46,7 +46,7 @@ export default function ResponsiveNavbar() {
               textDecoration: "none",
             }}
           >
-            The Crystal Ball of TRUTH!
+            The Ethics Pipeline
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
