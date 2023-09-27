@@ -22,7 +22,7 @@ export default function HowToUse() {
         {/* Card Section */}
         <Card sx={{ marginTop: 2, padding: 2, margin: "0 auto", maxWidth: "900px" }}>
         <div style={{ textAlign: 'center' }}>
-          <Typography variant="h2">How to Use the Ethical Pipeline:</Typography>
+          <Typography variant="h2">How to Use:</Typography>
         </div>
           <ol>
             <li>
