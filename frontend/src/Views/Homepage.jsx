@@ -14,7 +14,7 @@ export default function Homepage() {
       >
         <Paper sx={{ p: 4, borderRadius: 2, backgroundColor: "#fff" }}>
           <Typography component="h1" variant="h1" sx={{ textAlign: "center" }}>
-            Welcome to Automated Inquiries
+            Welcome to Ethics Pipeline
           </Typography>
           <Typography
             component="p"
