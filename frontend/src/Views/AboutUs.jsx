@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Container, Typography, Paper } from "@mui/material";
 
-export default function Homepage() {
+export default function AboutUs() {
   return (
     <Container component="main" maxWidth="lg">
       <Box
@@ -14,22 +14,7 @@ export default function Homepage() {
       >
         <Paper sx={{ p: 4, borderRadius: 2, backgroundColor: "#fff" }}>
           <Typography component="h1" variant="h1" sx={{ textAlign: "center" }}>
-            Welcome to our AI website!
-          </Typography>
-          <Typography
-            component="p"
-            variant="h5"
-            sx={{ mt: 2, textAlign: "center" }}
-          >
-            Your one-stop online website for answering your moral and ethical
-            questions...
-          </Typography>
-          <Typography
-            component="p"
-            variant="h5"
-            sx={{ mt: 2, textAlign: "center" }}
-          >
-            We Know All...
+            About Us Page
           </Typography>
         </Paper>
       </Box>
