@@ -13,15 +13,11 @@ export default function HowToUse() {
           alignItems: "center",
         }}
       >
-        <Paper sx={{ p: 4, borderRadius: 2, backgroundColor: "#fff" }}>
-          <Typography component="h1" variant="h1" sx={{ textAlign: "center" }}>
-            How to Use page
+        <Paper sx={{ marginTop: 2, padding: 2, margin: "0 auto", maxWidth: "760px" }}>
+          <Typography component="h2" variant="h2" sx={{ textAlign: "center" }}>
+            How to Use Ethical Pipeline
           </Typography>
-        </Paper>
-       
-        {/* Card Section */}
-        <Card sx={{ marginTop: 2, padding: 2, margin: "0 auto", maxWidth: "760px" }}>
-          <Typography variant="h2">How to Use the AI Chat Bot:</Typography>
+          {/* <Typography variant="h2">How to Use the AI Chat Bot:</Typography> */}
           <ol>
             <li>
               <Typography variant="body1">
@@ -39,7 +35,7 @@ export default function HowToUse() {
                 <strong>Exploring Further:</strong> You can continue exploring more ethical questions by entering them into the input box and selecting your stance using the buttons. Each time you select a button, you will receive immediate feedback and insights into the collective opinions on that particular question.
               </Typography>
             </li>
-            <li>
+            {/* <li>
               <Typography variant="body1">
                 <strong>About Us:</strong> If you want to learn more about our organization and the purpose of the Ethical Questionnaire, click on the "About Us" section in the navigation bar.
               </Typography>
@@ -48,10 +44,9 @@ export default function HowToUse() {
               <Typography variant="body1">
                 <strong>Returning Home:</strong> At any point during your session, you can click the "Home" button in the navigation bar to return to the home page and start anew.
               </Typography>
-            </li>
+            </li> */}
           </ol>
-        </Card>
-
+        </Paper>
       </Box>
     </Container>
   );
