@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
@@ -8,11 +8,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useTheme } from "@emotion/react";
 import { AppBar, Tab, Tabs } from "@mui/material";
 
-const darkTheme = createTheme({
-  // palette: {
-  //   mode: 'dark',
-  // },
-});
+const darkTheme = createTheme();
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -48,12 +44,36 @@ function a11yProps(index) {
 }
 
 export default function AIChatBot() {
-  //submitting the form and logging in if correct credentials
-  //if correct it will send the user to "/"
+  const [inputValue, setInputValue] = useState(""); // State to store user input
+  const [outputValue, setOutputValue] = useState(""); // State to store ChatGPT response
+
+  // Function to send user input to ChatGPT API
+  const sendToChatGPT = async () => {
+    try {
+      // Replace 'YOUR_CHATGPT_API_URL' with the actual API endpoint
+      const response = await fetch("YOUR_CHATGPT_API_URL", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ input: inputValue }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setOutputValue(data.output);
+      } else {
+        // Handle error here
+        console.error("Error sending input to ChatGPT");
+      }
+    } catch (error) {
+      console.error("Error sending input to ChatGPT:", error);
+    }
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    (async () => {})();
+    sendToChatGPT(); // Send user input to ChatGPT
   };
 
   const theme = useTheme();
@@ -94,6 +114,8 @@ export default function AIChatBot() {
               type="question"
               autoComplete="question"
               autoFocus
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
             />
           </Box>
           <AppBar position="static">
@@ -110,21 +132,21 @@ export default function AIChatBot() {
               <Tab label="For" {...a11yProps(2)} />
             </Tabs>
           </AppBar>
-          <view
+          <div
             axis={theme.direction === "rtl" ? "x-reverse" : "x"}
             index={value}
             onChangeIndex={handleChangeIndex}
           >
             <TabPanel value={value} index={0} dir={theme.direction}>
-              Against answer to question
+              {outputValue} {/* Display ChatGPT response */}
             </TabPanel>
             <TabPanel value={value} index={1} dir={theme.direction}>
-              Neutral answer to question
+              {outputValue} {/* Display ChatGPT response */}
             </TabPanel>
             <TabPanel value={value} index={2} dir={theme.direction}>
-              For answer to question
+              {outputValue} {/* Display ChatGPT response */}
             </TabPanel>
-          </view>
+          </div>
         </Box>
       </Container>
     </ThemeProvider>
