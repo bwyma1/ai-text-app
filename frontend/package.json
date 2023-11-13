@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@chatscope/chat-ui-kit-react": "github:chatscope/chat-ui-kit-react",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@magicul/react-chat-stream": "^0.2.1",
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.14.10",
     "@testing-library/jest-dom": "^5.16.5",
@@ -19,6 +21,7 @@
     "react-scripts": "5.0.1",
     "react-strap": "^0.0.1",
     "reactstrap": "^9.1.9",
+    "socket.io-client": "^4.7.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
