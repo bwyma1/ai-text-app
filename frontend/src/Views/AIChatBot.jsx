@@ -7,6 +7,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useTheme } from "@emotion/react";
 import { AppBar, Tab, Tabs } from "@mui/material";
+import Chatbox from "../Components/chatBox.jsx";
 
 const darkTheme = createTheme({
   // palette: {
@@ -16,7 +17,6 @@ const darkTheme = createTheme({
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-
   return (
     <div
       role="tabpanel"
@@ -125,6 +125,7 @@ export default function AIChatBot() {
               For answer to question
             </TabPanel>
           </view>
+          <Chatbox />
         </Box>
       </Container>
     </ThemeProvider>
