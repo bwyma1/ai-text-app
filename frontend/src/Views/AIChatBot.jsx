@@ -6,8 +6,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useTheme } from "@emotion/react";
-import { AppBar, Button, Tab, Tabs } from "@mui/material";
-
+import { AppBar, Button, Card, Tab, Tabs } from "@mui/material";
 import { useState, useEffect } from "react";
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import {
@@ -18,6 +17,7 @@ import {
   MessageInput,
   TypingIndicator,
 } from "@chatscope/chat-ui-kit-react";
+import "./custom-styles.css";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -52,124 +52,14 @@ function a11yProps(index) {
   };
 }
 
-// export default function AIChatBot() {
-//   const [inputValue, setInputValue] = useState(""); // State to store user input
-//   const [outputValue, setOutputValue] = useState(""); // State to store ChatGPT response
-
-//   // Function to send user input to ChatGPT API
-//   const sendToChatGPT = async () => {
-//     try {
-//       // Replace 'YOUR_CHATGPT_API_URL' with the actual API endpoint
-//       const response = await fetch("YOUR_CHATGPT_API_URL", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({ input: inputValue }),
-//       });
-
-//       if (response.ok) {
-//         const data = await response.json();
-//         setOutputValue(data.output);
-//       } else {
-//         // Handle error here
-//         console.error("Error sending input to ChatGPT");
-//       }
-//     } catch (error) {
-//       console.error("Error sending input to ChatGPT:", error);
-//     }
-//   };
-
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     sendToChatGPT(); // Send user input to ChatGPT
-//   };
-
-// const theme = useTheme();
-//   const [value, setValue] = React.useState(0);
-
-// const handleChange = (event, newValue) => {
-//   setValue(newValue);
-// };
-
-//   const handleChangeIndex = (index) => {
-//     setValue(index);
-//   };
-
-//   return (
-//     <ThemeProvider theme={darkTheme}>
-//       <Container maxWidth="sm">
-//         <Box
-//           sx={{
-//             marginTop: 8,
-//             display: "flex",
-//             flexDirection: "column",
-//             alignItems: "center",
-//           }}
-//         >
-//           <Typography component="h1" variant="h5" centered>
-//             -Chat Bot-
-//           </Typography>
-//         </Box>
-//         <Box sx={{ bgcolor: "background.paper" }}>
-//           <Box component="form" onSubmit={handleSubmit} noValidate>
-//             <TextField
-//               sx={{ mt: 3, mb: 2 }}
-//               required
-//               fullWidth
-//               id="question"
-//               label="Enter Your Question Here"
-//               name="question"
-//               type="question"
-//               autoComplete="question"
-//               autoFocus
-//               value={inputValue}
-//               onChange={(e) => setInputValue(e.target.value)}
-//             />
-//           </Box>
-//           <AppBar position="static">
-//             <Tabs
-//               value={value}
-//               onChange={handleChange}
-//               indicatorColor="secondary"
-//               textColor="inherit"
-//               variant="fullWidth"
-//               aria-label="full width tabs example"
-//             >
-//               <Tab label="Against" {...a11yProps(0)} />
-//               <Tab label="Neutral" {...a11yProps(1)} />
-//               <Tab label="For" {...a11yProps(2)} />
-//             </Tabs>
-//           </AppBar>
-//           <div
-//             axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-//             index={value}
-//             onChangeIndex={handleChangeIndex}
-//           >
-//             <TabPanel value={value} index={0} dir={theme.direction}>
-//               {outputValue} {/* Display ChatGPT response */}
-//             </TabPanel>
-//             <TabPanel value={value} index={1} dir={theme.direction}>
-//               {outputValue} {/* Display ChatGPT response */}
-//             </TabPanel>
-//             <TabPanel value={value} index={2} dir={theme.direction}>
-//               {outputValue} {/* Display ChatGPT response */}
-//             </TabPanel>
-//           </div>
-//         </Box>
-//       </Container>
-//     </ThemeProvider>
-//   );
-// }
-
 const darkTheme = createTheme();
 
-const API_KEY = "";
+const API_KEY = "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";
 
 const AIChatBot = () => {
   const [messages, setMessages] = useState([
     {
-      message: "Hello, I'm ChatGPT! Ask me anything!",
+      message: "Hello, I'm The Crystal Ball of Truth! Ask me any ethical question and stance and I'll tell you what the world thinks! To used me, simply type in your question, and submit it for just the default responese. If you have a select the stance, I'll give you a more specific response. Just click on the buttons to the right to select your stance!",
       sentTime: "just now",
       sender: "ChatGPT",
     },
@@ -179,6 +69,7 @@ const AIChatBot = () => {
   const [value, setValue] = React.useState(0);
   const [outputValue, setOutputValue] = useState("");
   const theme = useTheme();
+  const tempBuffer = [];
 
   const handleChangeIndex = (index) => {
     setValue(index);
@@ -241,102 +132,91 @@ const AIChatBot = () => {
     return response.json();
   }
 
+  const handleButtonClicked = (option) => {
+    const newMessage = {
+      message: `Argument ${option}`,
+      direction: "outgoing",
+      sender: "user",
+    };
+  
+    setMessages((prevMessages) => [...prevMessages, newMessage]);
+    setIsTyping(true);
+  
+    // Interaction with your chatbot or specific actions based on the selected option can be handled here.
+    // For example, you can send the selected option to your backend and process it there.
+    // You can also use the selected option to modify the response from your chatbot.
+    // For example, you can append the selected option to the response from your chatbot.
+  };
+
   return (
-    <div className="App">
-      <div style={{ position: "relative", height: "800px", width: "700px" }}>
-        <MainContainer>
-          <ChatContainer>
-            <MessageList
-              scrollBehavior="smooth"
-              typingIndicator={
-                isTyping ? (
-                  <TypingIndicator content="ChatGPT is typing" />
-                ) : null
-              }
-            >
-              {messages.map((message, i) => {
-                console.log(message);
-                return <Message key={i} model={message} />;
-              })}
-            </MessageList>
-            <MessageInput
-              placeholder="Send a Message"
-              onSend={handleSendRequest}
-            />
-          </ChatContainer>
-        </MainContainer>
-      </div>
+      <div className="App">
+        <div style={{ position: "absolute", height: "600px", width: "100%", display: "flex", justifyContent: "flex", alignItems: "center" }}>
+          <MainContainer>
+            <ChatContainer>
+              <MessageList
+                scrollBehavior="smooth"
+                typingIndicator={
+                  isTyping ? (
+                    <TypingIndicator content="Working on it" />
+                  ) : null
+                }
+              >
+                {messages.map((message, i) => {
+                  console.log(message);
+                  return (
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                      <Message key={i} model={message} />
+                    </div>
+                  );                
+                })}
+              </MessageList>
+              <MessageInput
+                placeholder="Enter your Question"
+                onSend={handleSendRequest}
+              />
+            </ChatContainer>
+          </MainContainer>
+          <Card style={{ height: "500px", width: "400px", marginLeft: "10px", padding: "70px 30px 30px 10px" }}>
+            <div style={{ display: "flex", flexDirection: "column", marginTop: "50px", gap: "30px" }}>
+              <Button
+                variant="contained"
+                onClick={() => handleButtonClicked("For")}
+                style={{ backgroundColor: "green", color: "white" }}
+              >
+                For
+              </Button>
+              <Card>
+                <Typography variant="body2">
+                  Provide reasons in favor of your stance.
+                </Typography>
+              </Card>
+              <Button variant="contained" onClick={() => handleButtonClicked("Neutral")}>
+                Neutral
+              </Button>
+              <Card>
+                <Typography variant="body2">
+                  Present a neutral perspective or ask for more information.
+                </Typography>
+              </Card>
+                <Button
+                  variant="contained"
+                  onClick={() => handleButtonClicked("Against")}
+                  style={{ backgroundColor: "red", color: "white" }}
+                >
+                  Against
+                </Button>
+              <Card>
+                <Typography variant="body2">
+                  Argue against the given stance or present opposing views.
+                </Typography>
+              </Card>
+            </div>
+          </Card>
+        </div>
     </div>
-    // <ThemeProvider theme={darkTheme}>
-    //   <Container maxWidth="sm">
-    //     <Box
-    //       sx={{
-    //         marginTop: 8,
-    //         display: "flex",
-    //         flexDirection: "column",
-    //         alignItems: "center",
-    //       }}
-    //     >
-    //       <Typography component="h1" variant="h5" centered>
-    //         -Chat Bot-
-    //       </Typography>
-    //     </Box>
-    //     <Box sx={{ bgcolor: "background.paper" }}>
-    //       <form onSubmit={handleSendRequest(inputValue)}>
-    //         <TextField
-    //           sx={{ mt: 3, mb: 2 }}
-    //           required
-    //           fullWidth
-    //           id="question"
-    //           label="Enter Your Question Here"
-    //           name="question"
-    //           type="question"
-    //           autoComplete="question"
-    //           autoFocus
-    //           value={inputValue}
-    //           onChange={(e) => setInputValue(e.target.value)}
-    //         />
-    //         <Button variant="outlined" color="secondary" type="submit">
-    //           submit
-    //         </Button>
-    //       </form>
-    //       <MessageInput
-    //         placeholder="Send a Message"
-    //         onSend={handleSendRequest}
-    //       />
-    //       <AppBar position="static">
-    //         <Tabs
-    //           value={value}
-    //           onChange={handleChange}
-    //           indicatorColor="secondary"
-    //           textColor="inherit"
-    //           variant="fullWidth"
-    //           aria-label="full width tabs example"
-    //         >
-    //           <Tab label="Against" {...a11yProps(0)} />
-    //           <Tab label="Neutral" {...a11yProps(1)} />
-    //           <Tab label="For" {...a11yProps(2)} />
-    //         </Tabs>
-    //       </AppBar>
-    //       <div
-    //         axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-    //         index={value}
-    //         onChangeIndex={handleChangeIndex}
-    //       >
-    //         <TabPanel value={value} index={0} dir={theme.direction}>
-    //           {messages[messages.length - 1].message}
-    //         </TabPanel>
-    //         <TabPanel value={value} index={1} dir={theme.direction}>
-    //           {messages[messages.length - 1].message}
-    //         </TabPanel>
-    //         <TabPanel value={value} index={2} dir={theme.direction}>
-    //           {messages[messages.length - 1].message}
-    //         </TabPanel>
-    //       </div>
-    //     </Box>
-    //   </Container>
-    // </ThemeProvider>
   );
 };
 
 export default AIChatBot;
+
+

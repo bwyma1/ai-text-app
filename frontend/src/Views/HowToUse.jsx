@@ -32,7 +32,7 @@ export default function HowToUse() {
             </li>
             <li>
               <Typography variant="body1">
-                <strong>Viewing Results:</strong> After selecting one of the buttons, the system will analyze your response and display the results. 
+                <strong>Viewing Results:</strong> After selecting one of the buttons, the system will analyze your ethical question with that stance in mind. 
                 {/* You will see the overall distribution of responses from other users who have answered the same ethical question. This can help you understand how different people perceive the ethical dilemma. */}
               </Typography>
             </li>
@@ -53,7 +53,6 @@ export default function HowToUse() {
             </li>
           </ol>
         </Card>
-
       </Box>
     </Container>
   );
