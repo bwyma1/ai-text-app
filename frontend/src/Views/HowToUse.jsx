@@ -20,12 +20,10 @@ export default function HowToUse() {
         </Paper> */}
 
         {/* Card Section */}
-        <Card
-          sx={{ marginTop: 2, padding: 2, margin: "0 auto", maxWidth: "900px" }}
-        >
-          <div style={{ textAlign: "center" }}>
-            <Typography variant="h2">How to Use the AI Chat Bot:</Typography>
-          </div>
+        <Card sx={{ marginTop: 2, padding: 2, margin: "0 auto", maxWidth: "900px" }}>
+        <div style={{ textAlign: 'center' }}>
+          <Typography variant="h">How to Use:</Typography>
+        </div>
           <ol>
             <li>
               <Typography variant="body1">
@@ -36,9 +34,7 @@ export default function HowToUse() {
             </li>
             <li>
               <Typography variant="body1">
-                <strong>Viewing Results:</strong> After selecting one of the
-                buttons, the system will analyze your response and display the
-                results.
+                <strong>Viewing Results:</strong> After selecting one of the buttons, the system will analyze your ethical question with that stance in mind. 
                 {/* You will see the overall distribution of responses from other users who have answered the same ethical question. This can help you understand how different people perceive the ethical dilemma. */}
               </Typography>
             </li>
